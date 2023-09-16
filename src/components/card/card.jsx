@@ -24,12 +24,17 @@ function Card(properties) {
         <div className="master-container">
             <div className="master-image-container">
                 <div className="master-images">
-                    <img src={properties.images[image]} alt="nice pic" />
+                    {
+                        properties.images && properties.images.map((image) => (
+                            <img src={image} alt="nice pic" />
+                        ))
+                    }
                 </div>
                 <button className="master-image-prev-btn" onClick={prevImage}></button>
                 <button className="master-image-next-btn" onClick={nextImage}></button>
                 <div className="dots">
-                    {   properties.images.length > 1 &&
+                    {   
+                        properties.images && properties.images.length > 1 &&
                         properties.images.map((_, index) => (
                             <span key={index} className={`dot ${index === activeDot ? 'dot-active' : 'dot-inactive'}`} />
                         )

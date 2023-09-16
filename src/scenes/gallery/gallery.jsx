@@ -1,6 +1,6 @@
 import React from 'react';
 import './gallery.css';
-import Grid from './components/grid/grid'
+import Grid from '../../components/grid/grid'
 import { useState, useEffect } from 'react';
 
 
