@@ -25,9 +25,8 @@ function Card(properties) {
             <div className="master-image-container">
                 <div className="master-images">
                     {
-                        properties.images && properties.images.map((image) => (
-                            <img src={image} alt="nice pic" />
-                        ))
+                        properties.images && properties.images.length > 1 &&
+                        <img src={properties.images[image]} alt="nice pic" />
                     }
                 </div>
                 <button className="master-image-prev-btn" onClick={prevImage}></button>

@@ -14,7 +14,7 @@ function Gallery() {
   const serviceId = params.get("service_id");
 
   async function loadMasters() {
-    const url = new URL("https://bot-dev-domain.com:444/masters");
+    const url = new URL("https://bot-dev-domain.com:1444/masters");
     url.searchParams.set("page", String(currentPage));
     url.searchParams.set("limit", String(6));
     url.searchParams.set("city_id", cityId);

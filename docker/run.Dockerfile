@@ -8,4 +8,4 @@ RUN npm install -g serve http-server
 RUN cd bot-webapp && npm run build
 
 WORKDIR /bot-webapp/build
-CMD ["http-server", "--proxy", "https://bot-dev-domain.com/index.html?", "--cors", "-S", "-C", "../dev-full.crt", "-K", "../dev-key.key", "-p", "443"]
+CMD ["http-server", "--proxy", "https://bot-dev-domain.com:1445/index.html?", "--cors", "-S", "-C", "../dev-full.crt", "-K", "../dev-key.key", "-p", "1445"]

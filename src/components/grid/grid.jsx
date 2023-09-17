@@ -7,7 +7,7 @@ function Grid(properties) {
         <div className="master-grid">
             {
                 properties.cards.map((card) => (
-                    <Card images={card.images} name={card.name} description={card.description} />
+                    <Card images={card.imageURLs} name={card.name} description={card.description} />
                 )
             )}
         </div>
