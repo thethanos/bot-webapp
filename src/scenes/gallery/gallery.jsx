@@ -48,7 +48,7 @@ function Gallery() {
 
     return (
         <Box display="flex" flexDirection="column" justifyContent="center">
-            <Box display="flex" flexDirection="column" sx={{padding: "20px"}}>
+            <Box display="flex" flexDirection="column" sx={{padding: "15px"}}>
                 {
                     masters && masters.map((item)=>(
                         <MasterCard images={item.imageURLs} name={item.name} description={item.description} />
