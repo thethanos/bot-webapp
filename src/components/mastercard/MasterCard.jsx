@@ -8,15 +8,15 @@ function MasterCard({images, name, description}) {
     const theme = useTheme();
     const colors = getColors(theme.palette.mode);
     return (
-        <Card sx={{minWidth: "380px", minHeight: "580px", backgroundColor: colors.primary[400], marginBottom: "20px"}}>
+        <Card sx={{minWidth: "350px", minHeight: "560px", backgroundColor: colors.primary[400], marginBottom: "20px"}}>
             <Carousel indicators={true}>
                 {
                     images && images.map((item)=>(
-                        <CardMedia sx={{minHeight: "300px"}} image={item}/>
+                        <CardMedia sx={{minHeight: "290px"}} image={item}/>
                     ))
                 }
             </Carousel>
-            <CardContent sx={{minHeight: "200px"}}>
+            <CardContent sx={{minHeight: "190px"}}>
                 <Typography variant="h2" mb="10px">{name}</Typography>
                 <Typography variant="h5">{description}</Typography>
             </CardContent>

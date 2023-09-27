@@ -47,7 +47,7 @@ function Gallery() {
     }, []);
 
     return (
-        <Box display="flex" flexDirection="column">
+        <Box display="flex" flexDirection="column" justifyContent="center">
             <Box display="flex" flexDirection="column" sx={{padding: "20px"}}>
                 {
                     masters && masters.map((item)=>(
@@ -55,7 +55,7 @@ function Gallery() {
                     )) 
                 }
             </Box>
-            <Button variant="contained" onClick={onShowMoreBtn}>Посмотреть еще</Button>
+            <Button variant="contained" sx={{width: "100%"}} onClick={onShowMoreBtn}>Посмотреть еще</Button>
         </Box>
     );
 }
