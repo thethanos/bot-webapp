@@ -1,29 +1,40 @@
 import React from "react";
 import { useTheme } from "@emotion/react";
-import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
+import { Box, Button, CardMedia, Typography } from "@mui/material";
 import Carousel from 'react-material-ui-carousel';
 import { getColors } from "../../theme";
 
-function MasterCard({images, name, description}) {
+
+function MasterCard({ images, name, description }) {
     const theme = useTheme();
     const colors = getColors(theme.palette.mode);
     return (
-        <Card sx={{minWidth: "320px", minHeight: "560px", backgroundColor: colors.primary[400], marginBottom: "25px"}}>
-            <Carousel indicators={true}>
+        <Box sx={{ minWidth: "300px", backgroundColor: colors.primary[500], marginBottom: "25px" }}>
+            <Carousel indicators={true} >
                 {
-                    images && images.map((item)=>(
-                        <CardMedia sx={{minHeight: "290px"}} image={item}/>
+                    images && images.map((item, index) => (
+                        <CardMedia key={index} sx={{ minHeight: "290px", minWidth: "290px", maxWidth: "100%", height: "auto" }} image={item} />
                     ))
                 }
             </Carousel>
-            <CardContent sx={{minHeight: "190px"}}>
-                <Typography variant="h2" mb="10px">{name}</Typography>
-                <Typography variant="h5">{description}</Typography>
-            </CardContent>
-            <CardActions>
-                <Button>Написать мастеру</Button>
-            </CardActions>
-        </Card>
+            <Box sx={{ minHeight: "150px" }}>
+                <Typography variant="h3" mb="25px" color="#FFE5D8">{name}</Typography>
+                <Typography variant="h5" mb="25px">{description}</Typography>
+            </Box>
+            <Button sx={{
+                paddingLeft: "1px",
+                paddingRight: "1px",
+                minHeight: "25px",
+                color: "#DD8560",
+                fontSize: "1.5rem",
+                textTransform: "none",
+                marginBottom: "25px"
+            }}
+            >
+                Написать мастеру
+            </Button>
+            <Box sx={{ border: "1px solid #FFE5D8", maxHeight: "1px" }} />
+        </Box>
     );
 };
 

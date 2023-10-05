@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Box, Button } from '@mui/material';
 import MasterCard from '../../components/mastercard/MasterCard';
+import header from "../../assets/header_dark_mode.png";
 
 function Gallery() {
     const [masters, setMasters] = useState([]);
@@ -9,8 +10,8 @@ function Gallery() {
 
     const pageUrl = new URL(window.location.href);
     const params = new URLSearchParams(pageUrl.search);
-    const cityId = params.get("city_id");
-    const serviceId = params.get("service_id");
+    const cityId = 1695580428;//params.get("city_id");
+    const serviceId = 1695581310;//params.get("service_id");
 
     async function loadMasters() {
         const url = new URL("https://bot-dev-domain.com:1444/masters");
@@ -47,15 +48,18 @@ function Gallery() {
     }, []);
 
     return (
-        <Box display="flex" flexDirection="column" justifyContent="center">
-            <Box display="flex" flexDirection="column" sx={{padding: "15px"}}>
+        <Box display="flex" flexDirection="column" justifyContent="center" sx={{padding: "15px 37px 15px 37px", overflow: "hidden"}}>
+            <Box display="flex" justifyContent="center" mb="25px">
+                <img src={header} alt="logo" />
+            </Box>
+            <Box display="flex" flexDirection="column">
                 {
-                    masters && masters.map((item)=>(
-                        <MasterCard images={item.imageURLs} name={item.name} description={item.description} />
+                    masters && masters.map((item, index)=>(
+                        <MasterCard key={index} images={item.imageURLs} name={item.name} description={item.description} />
                     )) 
                 }
             </Box>
-            <Button variant="contained" sx={{width: "100%"}} onClick={onShowMoreBtn}>Посмотреть еще</Button>
+            <Button variant="contained" sx={{width: "100%", color: "#FFE5D8"}} onClick={onShowMoreBtn}>Посмотреть еще</Button>
         </Box>
     );
 }

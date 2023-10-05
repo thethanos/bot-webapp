@@ -2,7 +2,7 @@ import React from "react";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
 import { ColorModeContext, useMode } from "./theme";
-import Gallery from './scenes/gallery/gallery';
+import Gallery from './scenes/gallery/Gallery';
 
 function App() {
     const [theme, colorMode] = useMode();
