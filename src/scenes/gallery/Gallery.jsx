@@ -55,7 +55,13 @@ function Gallery() {
             <Box display="flex" flexDirection="column">
                 {
                     masters && masters.map((item, index)=>(
-                        <MasterCard key={index} images={item.imageURLs} name={item.name} description={item.description} />
+                        <MasterCard 
+                            key={index} 
+                            images={item.imageURLs} 
+                            name={item.name} 
+                            description={item.description} 
+                            contact={item.contact} 
+                        />
                     )) 
                 }
             </Box>

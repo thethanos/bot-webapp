@@ -5,17 +5,17 @@ import Carousel from 'react-material-ui-carousel';
 import { getColors } from "../../theme";
 
 
-function MasterCard({ images, name, description }) {
+function MasterCard({ images, name, description, contact }) {
     const theme = useTheme();
     const colors = getColors(theme.palette.mode);
     return (
         <Box sx={{ minWidth: "300px", backgroundColor: colors.primary[500], marginBottom: "25px" }}>
             <Carousel 
                 indicators={images.length > 1}
+                navButtonsAlwaysInvisible={images.length <= 1} 
                 indicatorIconButtonProps={{style : {color: "black"}}}
                 activeIndicatorIconButtonProps={{style: {color: "#DD8560"}}} 
-                sx={{marginBottom: images.length <= 1?"20px":""}}
-                navButtonsAlwaysInvisible={images.length <= 1} 
+                sx={{marginBottom: images.length > 1?"10px":"20px"}}
             >
                 {
                     images && images.map((item, index) => (
@@ -36,6 +36,7 @@ function MasterCard({ images, name, description }) {
                 textTransform: "none",
                 marginBottom: "25px"
             }}
+                href={contact}
             >
                 Написать мастеру
             </Button>
