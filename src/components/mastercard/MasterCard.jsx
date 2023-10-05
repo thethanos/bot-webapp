@@ -10,7 +10,13 @@ function MasterCard({ images, name, description }) {
     const colors = getColors(theme.palette.mode);
     return (
         <Box sx={{ minWidth: "300px", backgroundColor: colors.primary[500], marginBottom: "25px" }}>
-            <Carousel indicators={true} >
+            <Carousel 
+                indicators={images.length > 1}
+                indicatorIconButtonProps={{style : {color: "black"}}}
+                activeIndicatorIconButtonProps={{style: {color: "#DD8560"}}} 
+                sx={{marginBottom: images.length <= 1?"20px":""}}
+                navButtonsAlwaysInvisible={images.length <= 1} 
+            >
                 {
                     images && images.map((item, index) => (
                         <CardMedia key={index} sx={{ minHeight: "290px", minWidth: "290px", maxWidth: "100%", height: "auto" }} image={item} />
