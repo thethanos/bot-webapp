@@ -57,7 +57,7 @@ function Gallery() {
                     masters && masters.map((item, index)=>(
                         <MasterCard 
                             key={index} 
-                            images={item.imageURLs} 
+                            images={item.images} 
                             name={item.name} 
                             description={item.description} 
                             contact={item.contact} 
