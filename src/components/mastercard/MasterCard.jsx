@@ -1,6 +1,6 @@
 import React from "react";
 import { useTheme } from "@emotion/react";
-import { Box, Button, CardMedia, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import Carousel from 'react-material-ui-carousel';
 import { getColors } from "../../theme";
 
@@ -19,7 +19,19 @@ function MasterCard({ images, name, description, contact }) {
             >
                 {
                     images && images.map((item, index) => (
-                        <CardMedia key={index} sx={{ minHeight: "290px", minWidth: "290px", maxWidth: "100%", height: "auto" }} image={item} />
+                        <Box 
+                            component="img"
+                            key={index} 
+                            sx={{ 
+                                minHeight: "290px", 
+                                minWidth: "290px", 
+                                height: "auto",
+                                width: "100%",
+                                aspectRatio: "1/1",
+                                objectFit: "cover" 
+                            }} 
+                            src={item}
+                        />
                     ))
                 }
             </Carousel>
