@@ -17,7 +17,10 @@ function MasterCard({ images, name, description, contact }) {
                 activeIndicatorIconButtonProps={{style: {color: "#DD8560"}}} 
                 sx={{
                     marginBottom: images.length > 1?"10px":"20px", 
-                    "& button[aria-label=Next][aria-label=Previous], & button[aria-label=Next][aria-label=Previous]:hover" : {
+                    "& button[aria-label=Next], & button[aria-label=Next]:hover" : {
+                        opacity: "0 !important", width: "100%", height: "90%", top: "0 !important"
+                    },
+                    "& button[aria-label=Previous], & button[aria-label=Previous]:hover" : {
                         opacity: "0 !important", width: "100%", height: "90%", top: "0 !important"
                     }
                 }}
@@ -54,7 +57,7 @@ function MasterCard({ images, name, description, contact }) {
                 marginBottom: "25px"
             }}
                 target="_blank"
-                href={`https://${contact}`}
+                href={contact}
             >
                 Написать мастеру
             </Button>
