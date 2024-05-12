@@ -3,49 +3,37 @@ import { useState, useEffect } from 'react';
 import { Box, Button } from '@mui/material';
 import MasterCard from '../../components/mastercard/MasterCard';
 import header from "../../assets/header_dark_mode.png";
+import { loadNextPage } from './loadNextPage';
 
 function Gallery() {
     const [masters, setMasters] = useState([]);
-    const [currentPage, setPage] = useState(0);
+    const [nextPage, setNextPage] = useState(0);
 
     const pageUrl = new URL(window.location.href);
     const params = new URLSearchParams(pageUrl.search);
     const cityId = params.get("city_id");
     const serviceId = params.get("service_id");
 
-    async function loadMasters() {
-        const url = new URL("https://bot-dev-domain.com:1444/masters/bot");
-        url.searchParams.set("page", String(currentPage));
-        url.searchParams.set("limit", String(6));
-        url.searchParams.set("city_id", cityId);
-        url.searchParams.set("service_id", serviceId);
-
-        try {
-            let response = await fetch(url.toString());
-            if (!response.ok) {
-                console.error("Error has occured during request GET ", url, response.status);
-                return;
-            }
-
-            let data = await response.json()
-            if (data.length === 0) {
-                return;
-            }
-
-            setMasters([...masters, ...data]);
-            setPage(currentPage + 1);
-        } catch (exception) {
-            console.error(`Exception has been thrown during request GET `, url, exception);
-        }
-    }
-
     function onShowMoreBtn() {
-        loadMasters();
+        loadNextPage(nextPage + 1, cityId, serviceId)
+        .then(data => {
+            setMasters([...masters, ...data]);
+            setNextPage(nextPage + 1);
+        })
+        .catch(err => {
+            console.log("Load next page failed: ", err);
+        });
     }
 
     useEffect(() => {
-        loadMasters();
-    }, []);
+        loadNextPage(0, cityId, serviceId)
+        .then(data => {
+            setMasters(data);
+        })
+        .catch(err => {
+            console.log("Loading masters failed: ", err)
+        });
+    }, [cityId, serviceId]);
 
     return (
         <Box display="flex" flexDirection="column" justifyContent="center" sx={{padding: "15px 37px 15px 37px", overflow: "hidden"}}>

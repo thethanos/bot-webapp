@@ -12,10 +12,14 @@ function MasterCard({ images, name, description, contact }) {
         <Box sx={{ minWidth: "300px", backgroundColor: colors.primary[500], marginBottom: "25px" }}>
             <Carousel 
                 indicators={images.length > 1}
-                navButtonsAlwaysInvisible={images.length <= 1} 
+                navButtonsAlwaysInvisible={images.length <= 1}
                 indicatorIconButtonProps={{style : {color: "black"}}}
                 activeIndicatorIconButtonProps={{style: {color: "#DD8560"}}} 
-                sx={{marginBottom: images.length > 1?"10px":"20px"}}
+                sx={{
+                    marginBottom: images.length > 1?"10px":"20px", 
+                    "& button[aria-label=Next], & button[aria-label=Next]:hover" : {opacity: "0 !important", width: "100%", height: "90%"},
+                    "& button[aria-label=Previous], & button[aria-label=Previous]:hover" : {opacity: "0 !important", width: "100%", height: "90%"}
+                }}
             >
                 {
                     images && images.map((item, index) => (
@@ -48,6 +52,7 @@ function MasterCard({ images, name, description, contact }) {
                 textTransform: "none",
                 marginBottom: "25px"
             }}
+                target="_blank"
                 href={contact}
             >
                 Написать мастеру
