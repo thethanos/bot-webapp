@@ -20,10 +20,9 @@ const router = createBrowserRouter([
                 path: "bot-webapp/gallery",
                 element: <Gallery />,
                 loader: ({request}) => {
-                    const params = new URLSearchParams(request.url);
-                    const cityId = params.get("city_id");
-                    const serviceId = params.get("service_id");
-                    return loadNextPage(0, cityId, serviceId);
+                    const url = new URL(request.url)
+                    const params = new URLSearchParams(url.search);
+                    return loadNextPage(0, params.get("city_id"), params.get("service_id"));
                 }
             }
         ]
